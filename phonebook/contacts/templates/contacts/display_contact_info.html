@@ -1,0 +1,26 @@
+{% extends 'contacts/main.html'%}
+
+{% block show %}
+
+<span>name: {{person.name}}</span>
+<br>
+<hr>
+<span>number: {{person.number}}</span>
+<br>
+<hr>
+<span>email: {{person.email}}</span>
+<br>
+<hr>
+<span>address: {{person.address}}</span>
+<br>
+<hr>
+<span>location: {{person.location}}</span>
+<br>
+<hr>
+{% endblock show %}
+
+
+{% block navigation %}
+<a href="{% url 'update' person.id %}" class="btn">Update</a>
+
+{% endblock navigation %}

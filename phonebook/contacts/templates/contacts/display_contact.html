@@ -1,0 +1,36 @@
+{% extends 'contacts/main.html'%}
+{% load static %}
+{% block show %}
+<table>
+    {% for contact in contacts %}
+        <tr>
+            <td class="info">
+                <span>
+                    {{contact.name}}
+                </span>
+                <br>
+                <span>
+                    {{contact.number}}
+                </span>
+            </td>
+
+            <td class="command">
+                {% with person=contact.id %}
+                <a href="{% url 'details' person %}"
+                >view</a>
+                {% endwith %}
+                &nbsp;
+                <a class="delete" href="">delete</a>
+
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+    
+
+{% endblock show %}
+
+
+{% block navigation %}
+<a href="{% url 'new' %}" class="btn">Add contact</a>
+{% endblock navigation %}

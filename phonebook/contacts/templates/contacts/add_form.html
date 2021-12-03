@@ -1,0 +1,31 @@
+{% extends 'contacts/main.html'%}
+{% load static %}
+{% block show %}
+<form action="" method='POST'>
+  {% csrf_token %}
+  {{formset.management_form}}
+  <table>
+    {% for form in formset %}
+    <tr>
+      <td>
+        <label for="{{form.label}}">{{form.label_tag}}</label> 
+      </td>
+      <td>
+        {{form}}
+      </td>
+    </tr>
+    {% endfor %}
+
+    <tr>
+      <td></td>
+      <td>
+        <a href="{% url 'contacts'%}" class="cancel-btn">Cancel</a> 
+        &nbsp;
+        &nbsp;
+        &nbsp;
+        <input type="submit" value="save">
+      </td>
+    </tr>
+  </table>
+</form>
+{% endblock show %}

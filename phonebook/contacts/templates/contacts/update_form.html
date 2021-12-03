@@ -1,0 +1,15 @@
+{% extends 'contacts/main.html'%}
+{% load static %}
+{% block show %}
+<form action="" method="POST">
+    {% csrf_token %}
+    {{formset.management_form}}
+    {% for form in formset %}
+    {{form.label_tag}} <br>
+    {{form}} <br>
+    {% endfor %}
+
+    <a href="{% url 'contacts' %}" class="exit-btn">Exit</a>
+    <input type="submit" value="save">
+</form>
+{% endblock show %}
