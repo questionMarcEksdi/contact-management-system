@@ -18,9 +18,9 @@
                 {% with person=contact.id %}
                 <a href="{% url 'details' person %}"
                 >view</a>
-                {% endwith %}
                 &nbsp;
-                <a class="delete" href="">delete</a>
+                <a class = "delete" href="{% url 'delete' person %}">delete</a>
+                {% endwith %}
 
             </td>
         </tr>

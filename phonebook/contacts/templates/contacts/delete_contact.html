@@ -1,0 +1,9 @@
+{% extends 'contacts/main.html'%}
+{% block show %}
+<p>Are you sure you want to delete "{{person}} ?"</p>
+<form action="{% url 'delete' person.id %}" method="POST">
+{% csrf_token%}
+<a class="cancel-btn" href="{% url 'contacts' %}">Cancel</a>
+<input class="submit-btn" type="submit" name="Confirm">
+</form>
+{% endblock show %}

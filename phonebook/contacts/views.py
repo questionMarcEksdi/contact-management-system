@@ -38,7 +38,7 @@ def addContact(request):
     else:
         formset = personForm()
     
-    return render(request, 'contacts/add_form.html', {'formset': formset})
+    return render(request, 'contacts/add_contact.html', {'formset': formset})
     
 def updateContact(request, pk):
     person = Person.objects.get(id=pk)
@@ -49,11 +49,16 @@ def updateContact(request, pk):
         if formset.is_valid():
             formset.save()
             return redirect("/")
-            
-    # else:
-    #     formset = contactFormSet()
     
-    return render(request, 'contacts/update_form.html', {'formset': formset})
+    return render(request, 'contacts/update_contact.html', {'formset': formset})
         
-    
-    
+def deleteContact(request, pk):
+    person = Person.objects.get(id=pk)
+    if request.method == 'POST':
+        person.delete()
+        return redirect("/")
+        
+    context = {
+         'person': person,
+    }
+    return render(request, 'contacts/delete_contact.html',context)
